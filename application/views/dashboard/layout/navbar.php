@@ -59,9 +59,16 @@
 
             <!-- Nav Item - Data Bantuan -->
             <li class="nav-item">
-                <a class="nav-link" href="bantuan.html">
+                <a class="nav-link" href="<?= base_url('dashboard/kebutuhan-posko') ?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Bantuan</span></a>
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('dashboard/bencana') ?>">
+                    <i class="f#"></i>
+                    <span>Data bencana</span></a>
             </li>
 
             <!-- Divider -->

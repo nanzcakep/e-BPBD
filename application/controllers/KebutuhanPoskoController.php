@@ -15,10 +15,14 @@ class KebutuhanPoskoController extends CI_Controller {
     public function index(){
 
         $posko  = $this->PoskoModel->getPosko();
+        $kebutuhanPosko = $this->KebutuhanPoskoModel->getKebutuhanPosko();
 
-        $this->load->view('pages/posko/kebutuhan',[
-            'data' => $posko->result()
+        $this->load->view('dashboard/layout/navbar');
+        $this->load->view('dashboard/kebutuhan/index',[
+            'data' => $posko->result(),
+            'kebutuhanPosko' => $kebutuhanPosko
         ]);
+        $this->load->view('dashboard/layout/footer');
     }
 
    
@@ -29,12 +33,14 @@ class KebutuhanPoskoController extends CI_Controller {
             $buktiPengiriman = $this->BuktiPengirimanModel->getBuktiByKebutuhan($id_kebutuhan);
             $getPosko = $this->PoskoModel->getPosko();
             $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
+            $this->load->view('dashboard/layout/navbar');
             $this->load->view('pages/kebutuhan/detail',[
                 'kebutuhanPosko' => $detailKebutuhanPosko,
                 'posko' => $getPosko->result(),
                 'bukti' => $buktiPengiriman,
                 'nama_posko' =>  $getDetailPosko
             ]);
+            $this->load->view('dashboard/layout/footer');
         }else{
             $data = $this->input->post();
 

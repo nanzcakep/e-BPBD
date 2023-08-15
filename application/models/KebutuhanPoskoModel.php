@@ -4,6 +4,10 @@
 class KebutuhanPoskoModel extends CI_Model {
     private $table = 'kebutuhan_posko';
 
+    public function getKebutuhanPosko(){
+        return $this->db->get($this->table)->result();
+    }
+
     public function getKebutuhanByPoskoId($id_posko) {
         $query = $this->db->select('*')
                  ->from('kebutuhan_posko')

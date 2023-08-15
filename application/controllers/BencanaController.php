@@ -11,11 +11,10 @@ class BencanaController extends CI_Controller {
 
     public function index(){
         $bencana = $this->BencanaModel->getBencana(); // Call the getMobil method from the model
-        
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/bencana/index',[
-            "data" => $bencana,
-            "title" => 'Bencana'
+            'data' => $bencana,
+            'title' => 'Bencana'
         ]); 
         $this->load->view('dashboard/layout/footer');
     }
@@ -23,10 +22,12 @@ class BencanaController extends CI_Controller {
     public function detail($id_bencana = NULL){
         try {
             $bencana = $this->BencanaModel->getDetailBencana($id_bencana);
-            $this->load->view('pages/bencana/detail',[
+            $this->load->view('dashboard/layout/navbar');
+            $this->load->view('dashboard/bencana/detail',[
                 'data' => $bencana,
                 'title' => 'Detail bencana'
             ]);
+            $this->load->view('dashboard/layout/footer');
         } catch (Exception $e) {
             redirect('404_views');
         }
