@@ -54,6 +54,11 @@ $route['404_override'] = 'Custom404Controller';
 $route['translate_uri_dashes'] = FALSE;
 
 
+//dashboard
+$route['dashboard'] = 'DashboardController/index';
+
+
+
 //bencana routes
 $route['dashboard/bencana'] = 'BencanaController/index';
 $route['dashboard/bencana/detail/(:num)'] = 'BencanaController/detail/$1';

@@ -1,0 +1,59 @@
+/* Main Tag */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Login & Register Section */
+#login .title-css, #register .title-css {
+    font-size: 2rem;
+    font-weight: 500;
+    color: black;
+}
+
+#login label, #register label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: black;
+}
+
+#login .form-control-css, #register .form-control-css, #register .form-select-css {
+    min-height: calc(1.5em + (1rem + 2px));
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
+    font-weight: 300;
+    color: black;
+}
+
+#login .btn-login-css, #register .btn-register-css {
+    min-height: calc(1.5em + (1rem + 2px));
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    width: 40%;
+    font-weight: 500;
+    background-color: #a9b5be;
+    color: black;
+    border: none;
+}
+
+#login .btn-login-css:hover, #register .btn-register-css:hover {
+    background-color: #939ea6;
+}
+
+#login .register-css {
+    font-size: 1rem;
+    font-weight: 300;
+    color: black;
+}
+
+#login .button-register-css {
+    font-weight: 500;
+    text-decoration: none;
+    color: #5d6368;
+}
+
+#login .button-register-css:hover {
+    color: #383c3e;
+    text-decoration: underline;
+}
