@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <!-- Title -->
-    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="<?= base_url('public/assets/img/logo.png') ?>" type="image/x-icon">
     <title>Dashboard - BPBD Kota Batu</title>
 
     <!-- Font -->
@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- CSS -->
+    <link href="<?= base_url('public/assets/css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/assets/css/bencana/whatever.css') ?>" rel="stylesheet">
 
@@ -35,7 +36,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
                 <div class="sidebar-brand-icon">
-                    <img src="/img/logo.png" width="50px">
+                    <img src="<?= base_url('public/assets/img/logo.png') ?>" width="50px">
                 </div>
                 <div class="sidebar-brand-text mx-3">BPBD Kota Batu</div>
             </a>
@@ -57,17 +58,17 @@
                     <span>Data Posko</span></a>
             </li>
 
-            <!-- Nav Item - Data Bantuan -->
+            <!-- Nav Item - Data Kebutuhan Posko -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('dashboard/kebutuhan-posko') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Bantuan</span></a>
+                <i class="fas fa-fw fa-table"></i>
+                    <span>Data Kebutuhan Posko</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('dashboard/bencana') ?>">
-                    <i class="f#"></i>
+                <i class="fas fa-fw fa-table"></i>
                     <span>Data bencana</span></a>
             </li>
 
@@ -105,7 +106,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="<?= base_url('public/assets/img/undraw_profile.svg') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
