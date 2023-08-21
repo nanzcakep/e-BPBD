@@ -5,30 +5,21 @@ class PoskoController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-       
         $this->load->model('PoskoModel'); // Load the model
         $this->load->model('BencanaModel');
         $this->load->model('PengungsiModel');
         $this->load->model('KebutuhanPoskoModel');
-        $this->load->model('AuthModel'); // Load model yang akan digunakan
-        $data = $this->AuthModel->getUser($this->session->userdata('user_id'));
-        if ($data->role_id !== "1") {
-            redirect('404_view'); // Arahkan ke halaman login jika belum login
-        }
     }
 
     public function index(){
        $posko = $this->PoskoModel->getPosko();
        $bencana = $this->BencanaModel->getBencana();
-
-       
-       $this->load->view('dashboard/layout/navbar');
-       $this->load->view('dashboard/posko/index',[
-            "data" => $posko,
-            "title" => 'Posko',
-            "bencana" => $bencana
-        ]); 
-        $this->load->view('dashboard/layout/footer');
+     
+       $this->load->view('pages/posko/posko',[
+        "data" => $posko,
+        "title" => 'Posko',
+        "bencana" => $bencana
+    ]); 
     }
 
     // public function detail($id_posko = NULL) {
@@ -50,14 +41,12 @@ class PoskoController extends CI_Controller {
             $posko = $this->PoskoModel->getPoskoWithBencana($id_posko);
             $pengungsi = $this->PengungsiModel->getPengungsiByPosko($id_posko);
             $kebutuhan = $this->KebutuhanPoskoModel->getKebutuhanByPoskoId($id_posko);
-            $this->load->view('dashboard/layout/navbar');
-            $this->load->view('dashboard/posko/detail', [
+            $this->load->view('pages/posko/detail', [
                 'data' => $posko,
                 'pengungsi' => $pengungsi,
                 'kebutuhan' => $kebutuhan,
                 'title' => 'Detail Posko'
             ]);
-            $this->load->view('dashboard/layout/footer');
         } catch (Exception $e) {
             redirect('404_views');
         }
@@ -84,13 +73,12 @@ class PoskoController extends CI_Controller {
             try {
                 $bencana = $this->BencanaModel->getBencana();
                 $posko = $this->PoskoModel->getPoskoWithBencana($id_posko);
-                $this->load->view('dashboard/layout/navbar');
-                $this->load->view('dashboard/posko/update', [
+              
+                $this->load->view('pages/posko/update', [
                     'data' => $posko,
                     'bencana' => $bencana,
                     'title' => 'Detail Posko'
                 ]);
-                $this->load->view('dashboard/layout/footer');
             } catch (Exception $e) {
                 redirect('404_views');
             }

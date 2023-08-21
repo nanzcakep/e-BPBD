@@ -10,7 +10,7 @@ class BencanaModel extends CI_Model {
     }
 
     public function getBencana(){
-        return $this->db->get($this->table)->result();
+        return $this->db->get($this->table);
     }
 
     public function getDetailBencana($id_bencana = NULL){

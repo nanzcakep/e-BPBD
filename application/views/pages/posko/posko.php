@@ -11,9 +11,9 @@
     <ul>
         <?php foreach ($data->result() as $row): ?>
             <li><?= $row->posko  ?></li>
-            <a href="<?= base_url('admin/dashboard/posko/detail/'.$row->id_posko); ?>">Detail</a> | 
-            <a href="<?= base_url('admin/dashboard/posko/update/'.$row->id_posko); ?>">Update</a> |
-            <a href="<?= base_url('admin/dashboard/posko/delete/'.$row->id_posko); ?>">Delete</a>
+            <a href="<?= base_url('dashboard/posko/detail/'.$row->id_posko); ?>">Detail</a> | 
+            <a href="<?= base_url('dashboard/posko/update/'.$row->id_posko); ?>">Update</a> |
+            <a href="<?= base_url('dashboard/posko/delete/'.$row->id_posko); ?>">Delete</a>
         <?php endforeach; ?>
     </ul>
 

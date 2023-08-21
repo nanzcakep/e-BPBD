@@ -9,7 +9,7 @@
         <ul>
             <?php foreach ($data as $row) : ?>
             <li><p><?= $row->nama; ?> | <?= $row->posko; ?> |  
-            <a href="<?= base_url('admin/dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>">detail</a> </p></li>
+            <a href="<?= base_url('dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>">detail</a> </p></li>
             <?php endforeach; ?>
         </ul>
     </div>
