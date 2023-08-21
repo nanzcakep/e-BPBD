@@ -32,5 +32,18 @@ class PengungsiModel extends CI_Model {
         return $result;
     }
 
+    public function createPengungsi($data){
+        $this->db->insert($this->table, $data);
+    }
+
+    public function updatePengungsi($data,$id_pengungsi){
+        $this->db->update($this->table, $data, array('id_pengungsi' => $id_pengungsi));
+    }
+
+    public function deletePengungsi($id_pengungsi){
+        $this->db->delete($this->table, array('id_pengungsi' => $id_pengungsi));
+    }
+
+
 
 }

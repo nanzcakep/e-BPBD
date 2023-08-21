@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <h1>This Page Update</h1>
-    <div>
-        <ul>
-            <form action="" method="post">
-                <label for="posko">nama</label>
-                <input type="text" name="posko" value="<?= $data->posko; ?>">
-                <label for="alamat">alamat</label>
-                <input type="text" name="alamat"  value="<?= $data->alamat; ?>">
-                <label for="kota">kota</label>
-                <input type="text" name="kota"  value="<?= $data->kota; ?>">
-                <label for="kapasitas">kapasitas</label>
-                <input type="number" name="kapasitas"  value="<?= $data->kapasitas; ?>">
-                <label for="id_bencana">bencana yang terjadi : </label>
-                <select name="id_bencana" id="id_bencana">
-                    <option value="<?= $data->id_bencana; ?>"><?= $data->bencana.' - '.$data->lokasi; ?></option>
-                    <?php foreach ($bencana->result() as $row) : ?>
-                        <?php if ($row->id_bencana !== $data->id_bencana) : ?>
-                            <option value="<?= $row->id_bencana; ?>"><?= $row->bencana." - ".$row->lokasi; ?></option>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </select>
-                <button type="submit" name="update" >Update data</button>
-            </form>
-        </ul>
+<div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Update Data</h1>
+<p class="mb-4">Isi data-data dibawah dengan benar.</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Update Data</h6>
     </div>
+    <div class="card-body">
+        <form action="" method="post">
+            <label for="posko" class="mb-1">nama</label>
+            <input type="text" name="posko" class="form-control mb-2 w-100" value="<?= $data->posko; ?>">
+            <label for="alamat" class="mb-1">alamat</label>
+            <input type="text" name="alamat" class="form-control mb-2 w-100" value="<?= $data->alamat; ?>">
+            <label for="kota" class="mb-1">kota</label>
+            <input type="text" name="kota" class="form-control mb-2 w-100" value="<?= $data->kota; ?>">
+            <label for="kapasitas" class="mb-1">kapasitas</label>
+            <input type="number" name="kapasitas" class="form-control mb-2 w-100" value="<?= $data->kapasitas; ?>">
+            <label for="id_bencana" class="mb-1">bencana yang terjadi : </label>
+            <select name="id_bencana" id="id_bencana" class="form-control mb-4 w-100">
+                <option value="<?= $data->id_bencana; ?>"><?= $data->bencana.' - '.$data->lokasi; ?></option>
+                <?php foreach ($bencana as $row) : ?>
+                    <?php if ($row->id_bencana !== $data->id_bencana) : ?>
+                        <option value="<?= $row->id_bencana; ?>"><?= $row->bencana." - ".$row->lokasi; ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" name="update" class="btn btn-success w-100">Update data</button>
+        </form>
+    </div>
+</div>
+</div>
 </body>
-</html>
