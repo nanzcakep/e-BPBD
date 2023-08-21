@@ -9,7 +9,7 @@
     <h1>Kebutuhan Posko</h1>
     <div>
         <ul>
-            <form action="<?= base_url('dashboard/kebutuhan-posko/tambah'); ?>" method="post">
+            <form action="<?= base_url('admin/dashboard/kebutuhan-posko/tambah'); ?>" method="post">
                 <label for="kebutuhan">kebutuhan</label>
                 <input type="text" name="kebutuhan">
                 <label for="jumlah">jumlah</label>

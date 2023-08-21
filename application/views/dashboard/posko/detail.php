@@ -105,8 +105,8 @@
                         <td><?= $need->jenis_kebutuhan; ?></td>
                         <td><?= $need->jumlah; ?></td>
                         <td><?= $need->status; ?></td>
-                        <td><a href="<?= base_url('dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>" class='btn btn-primary'>Lihat Bukti</a></td>
-                        <td><a href="<?= base_url('donasi/'.$need->id_kebutuhan) ?>" class='btn btn-success'>Donasi Sekarang</a></td>
+                        <td><a href="<?= base_url('admin/dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>" class='btn btn-primary'>Lihat Bukti</a></td>
+                        <td><a href="<?= base_url('admin/dashboard/donasi/'.$need->id_kebutuhan) ?>" class='btn btn-success'>Donasi Sekarang</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -142,7 +142,11 @@
                     <tr>
                         <td><?= $row->nama; ?></td>
                         <td><?= $row->umur; ?></td>
-                        <td><a href="<?= base_url('dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>" class='btn btn-primary'>detail</a></td>
+                        <td>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>" class='btn btn-primary'>detail</a>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/update/'.$row->id_pengungsi); ?>" class='btn btn-success'>update</a>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/delete/'.$row->id_pengungsi); ?>" class='btn btn-danger'>delete</a>
+                    </td>
                     </tr>
                 <?php endforeach; ?>    
                 </tbody>

@@ -46,37 +46,31 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url('admin/dashboard') ?>">
+                <a class="nav-link" href="<?= base_url('dashboard') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
              <!-- Nav Item - Data Pengungsi -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/dashboard/pengungsi') ?>">
+                <a class="nav-link" href="<?= base_url('dashboard/posko') ?>">
                 <i class="fas fa-fw fa-table"></i>
-                    <span>Data Pengungsi</span></a>
+                    <span>Posko</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('dashboard/histori-donasi') ?>">
+                <i class="fas fa-fw fa-table"></i>
+                    <span>Histori</span></a>
             </li>
 
             <!-- Nav Item - Data Posko -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/dashboard/posko') ?>">
+                <a class="nav-link" href="<?= base_url('dashboard/posko') ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Posko</span></a>
             </li>
 
-            <!-- Nav Item - Data Kebutuhan Posko -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/dashboard/kebutuhan-posko') ?>">
-                <i class="fas fa-fw fa-table"></i>
-                    <span>Data Kebutuhan Posko</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/dashboard/bencana') ?>">
-                <i class="fas fa-fw fa-table"></i>
-                    <span>Data bencana</span></a>
-            </li>
+           
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -110,7 +104,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                                 <img class="img-profile rounded-circle"
                                     src="<?= base_url('public/assets/img/undraw_profile.svg') ?>">
                             </a>

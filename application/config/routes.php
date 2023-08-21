@@ -55,38 +55,54 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 //dashboard
-$route['dashboard'] = 'DashboardController/index';
+$route['admin/dashboard'] = 'DashboardController/index';
 
 
 
 //bencana routes
-$route['dashboard/bencana'] = 'BencanaController/index';
-$route['dashboard/bencana/detail/(:num)'] = 'BencanaController/detail/$1';
-$route['dashboard/bencana/tambah'] = 'BencanaController/tambah';
-$route['dashboard/bencana/update/(:num)'] = 'BencanaController/update/$1';
-$route['dashboard/bencana/delete/(:num)'] = 'BencanaController/delete/$1';
+$route['admin/dashboard/bencana'] = 'BencanaController/index';
+$route['admin/dashboard/bencana/detail/(:num)'] = 'BencanaController/detail/$1';
+$route['admin/dashboard/bencana/tambah'] = 'BencanaController/tambah';
+$route['admin/dashboard/bencana/update/(:num)'] = 'BencanaController/update/$1';
+$route['admin/dashboard/bencana/delete/(:num)'] = 'BencanaController/delete/$1';
 
 
 //posko routes
-$route['dashboard/posko'] = 'PoskoController/index';
-$route['dashboard/posko/detail/(:num)'] = 'PoskoController/detail/$1';
-$route['dashboard/posko/tambah'] = 'PoskoController/tambah';
-$route['dashboard/posko/update/(:num)'] = 'PoskoController/update/$1';
-$route['dashboard/posko/delete/(:num)'] = 'PoskoController/delete/$1';
+$route['admin/dashboard/posko'] = 'PoskoController/index';
+$route['admin/dashboard/posko/detail/(:num)'] = 'PoskoController/detail/$1';
+$route['admin/dashboard/posko/tambah'] = 'PoskoController/tambah';
+$route['admin/dashboard/posko/update/(:num)'] = 'PoskoController/update/$1';
+$route['admin/dashboard/posko/delete/(:num)'] = 'PoskoController/delete/$1';
 
 //pengungsi routes
-$route['dashboard/pengungsi'] = 'PengungsiController/index';
-$route['dashboard/pengungsi/detail/(:num)'] = 'PengungsiController/detail/$1';
+$route['admin/dashboard/pengungsi'] = 'PengungsiController/index';
+$route['admin/dashboard/pengungsi/detail/(:num)'] = 'PengungsiController/detail/$1';
+$route['admin/dashboard/pengungsi/tambah'] = 'PengungsiController/tambah';
+$route['admin/dashboard/pengungsi/update/(:num)'] = 'PengungsiController/update/$1';
+$route['admin/dashboard/pengungsi/delete/(:num)'] = 'PengungsiController/delete/$1';
 
 
 //kebutuhan routes
-$route['dashboard/kebutuhan-posko'] = 'KebutuhanPoskoController/index';
-$route['dashboard/kebutuhan-posko/detail/(:num)'] = 'KebutuhanPoskoController/detail/$1';
-$route['dashboard/kebutuhan-posko/tambah'] = 'KebutuhanPoskoController/tambah';
-$route['dashboard/kebutuhan-posko/delete/(:num)'] = 'KebutuhanPoskoController/delete/$1';
+$route['admin/dashboard/kebutuhan-posko'] = 'KebutuhanPoskoController/index';
+$route['admin/dashboard/kebutuhan-posko/detail/(:num)'] = 'KebutuhanPoskoController/detail/$1';
+$route['admin/dashboard/kebutuhan-posko/tambah'] = 'KebutuhanPoskoController/tambah';
+$route['admin/dashboard/kebutuhan-posko/update/(:num)'] = 'KebutuhanPoskoController/update/$1';
+$route['admin/dashboard/kebutuhan-posko/delete/(:num)'] = 'KebutuhanPoskoController/delete/$1';
 
 
 //donasi routes
-$route['donasi'] = 'DonasiController/index';
-$route['donasi/(:num)'] = 'DonasiController/donasi/$1';
-$route['donasi/kuy'] = 'DonasiController/donasi';
+$route['admin/dashboard/donasi'] = 'DonasiController/index';
+$route['admin/dashboard/donasi/(:num)'] = 'DonasiController/donasi/$1';
+$route['admin/dashboard/donasi/kuy'] = 'DonasiController/donasi';
+
+//UserController
+$route['dashboard'] = 'UserDashboardController/index';
+$route['dashboard/posko'] = 'UserDashboardController/getAllPosko';
+$route['dashboard/posko/detail/(:num)'] = 'UserDashboardController/getDetailPosko/$1';
+$route['dashboard/donasi/(:num)'] = 'UserDashboardController/donasi/$1';
+$route['dashboard/histori-donasi'] = 'UserDashboardController/getHistoriDonasi';
+
+//AuthController
+$route['login'] = 'AuthController/index';
+$route['auth/login'] = 'AuthController/login';
+$route['auth/logout'] = 'AuthController/logout';

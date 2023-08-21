@@ -36,8 +36,9 @@
                         <td><?= $need->jumlah ?></td>
                         <td><?= $need->status ?></td>
                         <td>
-                            <a href="<?= base_url('dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>" class='btn btn-primary'>Detail</a>
-                            <a href="<?= base_url('dashboard/kebutuhan-posko/edit/'.$need->id_kebutuhan) ?>" class='btn btn-success'>Edit</a>
+                            <a href="<?= base_url('admin/dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>" class='btn btn-primary'>Detail</a>
+                            <a href="<?= base_url('admin/dashboard/kebutuhan-posko/update/'.$need->id_kebutuhan) ?>" class='btn btn-success'>Update</a>
+                            <a href="<?= base_url('admin/dashboard/kebutuhan-posko/delete/'.$need->id_kebutuhan) ?>" class='btn btn-danger'>Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -55,7 +56,7 @@
         <h6 class="m-0 font-weight-bold text-dark">Tambah Data</h6>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('dashboard/kebutuhan-posko/tambah'); ?>" method="post">
+        <form action="<?= base_url('admin/dashboard/kebutuhan-posko/tambah'); ?>" method="post">
             <label for="kebutuhan" class="mb-1">Kebutuhan</label>
             <input type="text" name="kebutuhan" class="form-control mb-2 w-100">
             <label for="jumlah"class="mb-1">Jumlah</label>
