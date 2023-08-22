@@ -1,0 +1,47 @@
+@media screen and (max-width : 673px) {
+    /* Navbar */
+    .nav-link {
+        font-size: 12px;
+    }
+    
+    .nav-link.active {
+        font-weight: 300;
+    }
+
+    /* PageTitle Section */
+    #pagetitle {
+        height: auto;   
+    }
+
+    #pagetitle .black-transparent-layer {
+        height: 350px;
+        padding: 165px 0 0 0;
+    }
+
+    #pagetitle h2 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    #pagetitle h1 {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    /* Posko, Peta, & Footer Section */
+    #posko, #peta, #link, #footer {
+        padding: 50px 10px 50px 10px;
+    }
+
+    #posko h1, #peta h1, #link h1 {
+        font-size: 24px;
+    }
+
+    #posko p, #peta p, #link p {
+        font-size: 14px;
+    }
+
+    #peta iframe {
+        height: 400px;
+    }
+}
