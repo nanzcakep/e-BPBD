@@ -19,8 +19,8 @@
     <ul>
         <?php foreach ($kebutuhan as $need) : ?>
             <li><p><?= $need->jenis_kebutuhan; ?> | <?= $need->jumlah; ?> | <?= $need->status; ?> | </p>
-            <a href="<?= base_url('dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>">lihat bukti</a> |
-            <a href="<?= base_url('donasi/'.$need->id_kebutuhan) ?>">Donasi Sekarang</a>
+            <a href="<?= base_url('admin/dashboard/kebutuhan-posko/detail/'.$need->id_kebutuhan) ?>">lihat bukti</a> |
+            <a href="<?= base_url('admin/donasi/'.$need->id_kebutuhan) ?>">Donasi Sekarang</a>
             </li>
         <?php endforeach; ?>    
         </ul>

@@ -5,9 +5,15 @@ class KebutuhanPoskoController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+       
         $this->load->model('PoskoModel'); // Load the model
         $this->load->model('KebutuhanPoskoModel'); // Load the model
         $this->load->model('BuktiPengirimanModel'); // Load the model
+        $this->load->model('AuthModel'); // Load model yang akan digunakan
+        $data = $this->AuthModel->getUser($this->session->userdata('user_id'));
+        if ($data->role_id !== "1") {
+            redirect('404_view'); // Arahkan ke halaman login jika belum login
+        }
         
     }
 
@@ -27,34 +33,53 @@ class KebutuhanPoskoController extends CI_Controller {
 
    
     public function detail($id_kebutuhan){
-        
-        if(!isset($_POST['update'])){
-            $detailKebutuhanPosko = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
-            $buktiPengiriman = $this->BuktiPengirimanModel->getBuktiByKebutuhan($id_kebutuhan);
-            $getPosko = $this->PoskoModel->getPosko();
-            $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
-            $this->load->view('dashboard/layout/navbar');
-            $this->load->view('pages/kebutuhan/detail',[
-                'kebutuhanPosko' => $detailKebutuhanPosko,
-                'posko' => $getPosko->result(),
-                'bukti' => $buktiPengiriman,
-                'nama_posko' =>  $getDetailPosko
-            ]);
-            $this->load->view('dashboard/layout/footer');
-        }else{
-            $data = $this->input->post();
 
-            $kebutuhan = [
-                'id_posko' => $data['posko'],
-                'jenis_kebutuhan' => $data['kebutuhan'],
-                'jumlah' => $data['jumlah'],
-                'status' =>  $data['status']
-            ];
-
-            $this->KebutuhanPoskoModel->updateDataKebutuhan($kebutuhan,$id_kebutuhan);
+        $detailKebutuhanPosko = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
+        $buktiPengiriman = $this->BuktiPengirimanModel->getBuktiByKebutuhan($id_kebutuhan);
+        $getPosko = $this->PoskoModel->getPosko();
+        $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
+        foreach ($buktiPengiriman as $pengiriman) {
+            $user_id = intval($pengiriman->user_id);
         }
+        $getUser = $this->AuthModel->getUser($user_id);
+        $this->load->view('dashboard/layout/navbar');
+        $this->load->view('dashboard/kebutuhan/detail',[
+            'kebutuhanPosko' => $detailKebutuhanPosko,
+            'posko' => $getPosko->result(),
+            'bukti' => $buktiPengiriman,
+            'user' => $getUser,
+            'nama_posko' =>  $getDetailPosko
+        ]);
+        $this->load->view('dashboard/layout/footer');
+        
+        // if(!isset($_POST['update'])){
+        //     $detailKebutuhanPosko = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
+        //     $buktiPengiriman = $this->BuktiPengirimanModel->getBuktiByKebutuhan($id_kebutuhan);
+        //     $getPosko = $this->PoskoModel->getPosko();
+        //     $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
+        //     $this->load->view('dashboard/layout/navbar');
+        //     $this->load->view('dashboard/kebutuhan/detail',[
+        //         'kebutuhanPosko' => $detailKebutuhanPosko,
+        //         'posko' => $getPosko->result(),
+        //         'bukti' => $buktiPengiriman,
+        //         'nama_posko' =>  $getDetailPosko
+        //     ]);
+        //     $this->load->view('dashboard/layout/footer');
+        // }else{
+        //     $data = $this->input->post();
+
+        //     $kebutuhan = [
+        //         'id_posko' => $data['posko'],
+        //         'jenis_kebutuhan' => $data['kebutuhan'],
+        //         'jumlah' => $data['jumlah'],
+        //         'status' =>  $data['status']
+        //     ];
+
+        //     $this->KebutuhanPoskoModel->updateDataKebutuhan($kebutuhan,$id_kebutuhan);
+        // }
             
     }
+
 
     public function tambah(){
         $this->load->library('form_validation');
@@ -90,6 +115,32 @@ class KebutuhanPoskoController extends CI_Controller {
 
         echo json_encode($response);
 
+    }
+
+    public function update($id_kebutuhan){
+        if(!isset($_POST['update'])){
+            $detailKebutuhanPosko = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
+            $getPosko = $this->PoskoModel->getPosko();
+            $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
+            $this->load->view('dashboard/layout/navbar');
+            $this->load->view('dashboard/kebutuhan/update-kebutuhan',[
+                'kebutuhanPosko' => $detailKebutuhanPosko,
+                'posko' => $getPosko->result(),
+                'nama_posko' =>  $getDetailPosko
+            ]);
+            $this->load->view('dashboard/layout/footer');
+        }else{
+            $data = $this->input->post();
+
+            $kebutuhan = [
+                'id_posko' => $data['posko'],
+                'jenis_kebutuhan' => $data['kebutuhan'],
+                'jumlah' => $data['jumlah'],
+                'status' =>  $data['status']
+            ];
+
+            $this->KebutuhanPoskoModel->updateDataKebutuhan($kebutuhan,$id_kebutuhan);
+        }
     }
 
     public function delete($id_kebutuhan = NULL){
