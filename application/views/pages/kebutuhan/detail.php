@@ -1,7 +1,5 @@
 <body>
 <div class="container-fluid">
-
-<!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Detail Kebutuhan <?= $kebutuhanPosko->jenis_kebutuhan ?> - <?php echo $nama_posko->posko ?></h1>
 <p class="mb-4">Berikut adalah data detail kebutuhan posko yang terdapat di kota Batu.</p>
 
@@ -70,7 +68,17 @@
                             <td>Nanda</td>
                             <td><?= $bakti->tanggal_pengiriman; ?></td>
                             <td><?= $bakti->keterangan; ?></td>
-                            <td><?= $bakti->status; ?></td>
+                            <td>
+                                <select name="" id="statuskebutuhan<?= $bakti->id_kebutuhan ?>" class='form-control' onchange="updateStatus(<?= $bakti->id_kebutuhan ?>)">
+                                    <?php if ($bakti->status == 'Diterima') : ?>
+                                        <option value="1" selected>Diterima</option>
+                                        <option value="2">Terkirim</option>
+                                    <?php else : ?>
+                                        <option value="2" selected>Terkirim</option>
+                                        <option value="1">Diterima</option>
+                                    <?php endif; ?>
+                                </select>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -79,5 +87,44 @@
     </div>
 </div>
 </div>  
-
+<script src="<?= base_url('public/assets/js/izitoast.min.js') ?>"></script>
+<script>
+    function updateStatus(id) {
+        iziToast.show({
+        title: "Loading..",
+        color: "blue",
+        position: "topRight",
+        close: false,
+        overlay: true,
+        class: 'loadingrefresh'
+        })
+        var status = $('#statuskebutuhan'+id).val();
+        $.ajax({
+            url: "<?= base_url('kebutuhan/updateStatus/') ?>"+id,
+            type: "POST",
+            data: {
+                status: status
+            },
+            success: function(data) {
+                iziToast.hide({},document.getElementsByClassName('loadingrefresh')[0])
+                iziToast.show({
+                    title:'sukses',
+                    message:'status berhasil diubah',
+                    close:true,
+                    overlay:false
+                })
+            },
+            error:function(xhr){
+                iziToast.hide({},document.getElementsByClassName('loadingrefresh')[0])
+                iziToast.show({
+                    title:'gagal',
+                    color:'red',
+                    message:'ada kesalahan pada server',
+                    close:true,
+                    overlay:false
+                })
+            }
+        });
+    }
+</script>
 </body>
