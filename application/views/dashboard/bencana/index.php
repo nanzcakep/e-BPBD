@@ -4,6 +4,17 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data Bencana</h1>
 <p class="mb-4">Berikut adalah data bencana yang terdapat di kota Batu.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
 
 <!-- Content Row -->
 <div class="row">

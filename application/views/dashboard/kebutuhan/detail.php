@@ -8,7 +8,11 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Bukti Pengiriman</h1>
 <p class="mb-4">Berikut adalah data bukti pengiriman kebutuhan.</p>
-
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -38,8 +42,8 @@
                 <tbody>
                     <?php foreach($bukti as $bakti) : ?>
                         <tr>
-                            <td><img src="https://th.bing.com/th?id=OSK.cdda3e50229507ddbb0c9e644c7184c6&w=188&h=132&c=7&o=6&pid=SANGAM" alt="" width="100"></td>
-                            <td><?= $user->username ?></td>
+                            <td><img src="<?= base_url(''.$bakti->bukti) ?>" alt="" width="100"></td>
+                            <td><?= $bakti->username ?></td>
                             <td><?= $bakti->tanggal_pengiriman; ?></td>
                             <td><?= $bakti->keterangan; ?></td>
                             <td><?= $bakti->status; ?></td>

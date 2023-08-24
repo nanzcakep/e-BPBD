@@ -60,8 +60,8 @@
          
         </div>
     </div>
-    <a href="" class="btn btn-success">Update</a>
-    <a href="" class="btn btn-danger">Delete</a>
+    <a href="<?= base_url('admin/dashboard/bencana/update/'.$data->id_bencana) ?>" class="btn btn-success">Update</a>
+    <a href="<?= base_url('admin/dashboard/bencana/delete/'.$data->id_bencana) ?>" class="btn btn-danger">Delete</a>
 </div>
 </div>
 </body>

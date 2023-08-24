@@ -11,7 +11,7 @@
         <h6 class="m-0 font-weight-bold text-dark">Donasi Masuk Surga</h6>
     </div>
     <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <?php echo form_open_multipart('');?>
 
             <label for="kebutuhan" class="mb-1">Jenis Kebutuhan</label>
             <input type="text" name="kebutuhan" class="form-control mb-2 w-100" value="<?= $kebutuhan->jenis_kebutuhan ?>" readonly>
@@ -19,8 +19,8 @@
             <label for="tanggal" class="mb-1">Tanggal</label>
             <input type="date" name="tanggal" class="form-control mb-2 w-100">
 
-            <label for="bukti" class="mb-1">bukti</label>
-            <input type="text" name="bukti" class="form-control mb-2 w-100">
+            <label for="bukti" class="mb-1">Bukti</label>
+            <input type="file" name="bukti" accept=".jpg, .jpeg, .png" class="form-control mb-2 w-100">
             
             <!-- <label for="bukti" class="mb-1">Bukti</label>
             <input type="file" name="bukti" class="form-control-file mb-2" accept=".jpg, .jpeg, .png, .pdf"> -->

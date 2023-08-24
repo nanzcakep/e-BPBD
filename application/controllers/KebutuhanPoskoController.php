@@ -38,16 +38,16 @@ class KebutuhanPoskoController extends CI_Controller {
         $buktiPengiriman = $this->BuktiPengirimanModel->getBuktiByKebutuhan($id_kebutuhan);
         $getPosko = $this->PoskoModel->getPosko();
         $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
-        foreach ($buktiPengiriman as $pengiriman) {
-            $user_id = intval($pengiriman->user_id);
-        }
-        $getUser = $this->AuthModel->getUser($user_id);
+
+
+    
+
+       
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/kebutuhan/detail',[
             'kebutuhanPosko' => $detailKebutuhanPosko,
             'posko' => $getPosko->result(),
             'bukti' => $buktiPengiriman,
-            'user' => $getUser,
             'nama_posko' =>  $getDetailPosko
         ]);
         $this->load->view('dashboard/layout/footer');
@@ -90,10 +90,9 @@ class KebutuhanPoskoController extends CI_Controller {
         
         if ($this->form_validation->run() == false) {
             // Validasi gagal, tampilkan pesan kesalahan
-            $errors = $this->form_validation->error_array();
-            $response['status'] = 'error';
-            $response['message'] = 'Validasi gagal';
-            $response['errors'] = $errors;
+            $errors = validation_errors();
+            $this->session->set_flashdata('error_message', 'Kebutuhan posko gagal disimpan '. $errors);
+            redirect('admin/dashboard/kebutuhan-posko');
         } else {
             // Validasi berhasil, siapkan data kebutuhan dan simpan
             $data = $this->input->post();
@@ -105,20 +104,18 @@ class KebutuhanPoskoController extends CI_Controller {
                 'status' =>  "Dibutuhkan"
             ];
 
-        
-
             $this->KebutuhanPoskoModel->createDataKebutuhan($kebutuhan);
 
-            $response['status'] = 'success';
-            $response['message'] = 'Kebutuhan berhasil ditambahkan';
+            $this->session->set_flashdata('success_message', 'Kebutuhan posko berhasil disimpan ');
+            redirect('admin/dashboard/kebutuhan-posko');
     }
 
-        echo json_encode($response);
 
     }
 
     public function update($id_kebutuhan){
         if(!isset($_POST['update'])){
+            
             $detailKebutuhanPosko = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
             $getPosko = $this->PoskoModel->getPosko();
             $getDetailPosko = $this->PoskoModel->getDetailPosko($detailKebutuhanPosko->id_posko);
@@ -130,23 +127,40 @@ class KebutuhanPoskoController extends CI_Controller {
             ]);
             $this->load->view('dashboard/layout/footer');
         }else{
-            $data = $this->input->post();
+            $this->form_validation->set_rules('posko', 'Posko', 'required');
+            $this->form_validation->set_rules('kebutuhan', 'Jenis Kebutuhan', 'required');
+            $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric');
 
-            $kebutuhan = [
-                'id_posko' => $data['posko'],
-                'jenis_kebutuhan' => $data['kebutuhan'],
-                'jumlah' => $data['jumlah'],
-                'status' =>  $data['status']
-            ];
+            if ($this->form_validation->run() == FALSE) {
+                // Validasi gagal, tampilkan pesan-pesan kesalahan
+                $errors = validation_errors();
+                $this->session->set_flashdata('error_message', 'Kebutuhan posko gagal diupdate '. $errors);
+                redirect('admin/dashboard/kebutuhan-posko/update/'.$id_kebutuhan);
+            } else {
+                $data = $this->input->post();
 
-            $this->KebutuhanPoskoModel->updateDataKebutuhan($kebutuhan,$id_kebutuhan);
+                $kebutuhan = [
+                    'id_posko' => $data['posko'],
+                    'jenis_kebutuhan' => $data['kebutuhan'],
+                    'jumlah' => $data['jumlah'],
+                    'status' =>  $data['status']
+                ];
+
+                $this->KebutuhanPoskoModel->updateDataKebutuhan($kebutuhan,$id_kebutuhan);
+                $this->session->set_flashdata('success_message', 'Kebutuhan posko berhasil diupdate ');
+                redirect('admin/dashboard/kebutuhan-posko/update/'.$id_kebutuhan);
+            }
         }
     }
 
     public function delete($id_kebutuhan = NULL){
         $this->KebutuhanPoskoModel->deleteDataKebutuhan($id_kebutuhan);
+        $this->session->set_flashdata('success_message', 'Kebutuhan posko berhasil dihapus ');
+        redirect('admin/dashboard/kebutuhan-posko');
     }
 
+
+    
     // public function tambah() {
     //     $data = $this->input->post();
 

@@ -20,6 +20,12 @@ class AuthModel extends CI_Model {
         return NULL; // Kredensial tidak valid
     }
 
+    public function registerUser($user_data) {
+        // Insert user data into the 'users' table
+        $this->db->insert('users', $user_data);
+        return ($this->db->affected_rows() > 0);
+    }
+
     public function getUser($user_id){
         return $this->db->get_where('users', array('user_id' => $user_id))->row();
     }

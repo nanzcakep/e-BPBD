@@ -34,9 +34,10 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                <?php $no = 1; // Inisialisasi nomor awal ?>
                 <?php foreach($data as $pengungsi) : ?>
                     <tr>
-                        <td>1</td>
+                        <td><?=  $no++ ?></td>
                         <td><?= $pengungsi->nama ?></td>
                         <td><?= $pengungsi->umur ?></td>
                         <td><?= $pengungsi->tanggal_masuk ?></td>

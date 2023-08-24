@@ -32,7 +32,7 @@ class PengungsiController extends CI_Controller {
         try {
             $pengungsi = $this->PengungsiModel->getDetailPengungsi($id_pengungsi);
             $this->load->view('dashboard/layout/navbar');
-            $this->load->view('pages/pengungsi/detail',[
+            $this->load->view('dashboard/pengungsi/detail',[
                 'data' => $pengungsi,
                 'title' => 'Detail Pengungsi'
             ]);

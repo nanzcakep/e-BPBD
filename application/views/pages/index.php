@@ -64,6 +64,9 @@
                         <li class="nav-item mx-2">
                             <a href="#footer" class="nav-link active">Kontak</a>
                         </li>
+                        <li class="nav-item mx-2">
+                            <a href="<?= base_url('/login') ?>" class="nav-link active">login</a>
+                        </li>
                     </ul>
                 </div>
             </div>

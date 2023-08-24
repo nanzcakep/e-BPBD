@@ -34,14 +34,10 @@ class KebutuhanPoskoModel extends CI_Model {
 
    public function updateDataKebutuhan($data,$id_kebutuhan = NULL){
         $query = $this->db->update($this->table, $data, array('id_kebutuhan' => $id_kebutuhan));
-        if ($query) {
+        if (!$query) {
             // Update successful
-            echo "Update successful.";
-        } else {
-            // Update failed
             echo "Update failed.";
-        }
-       
+        } 
    }
 
    public function deleteDataKebutuhan($id_kebutuhan = NULL){
@@ -54,6 +50,15 @@ class KebutuhanPoskoModel extends CI_Model {
             echo "Delete failed.";
         }
    }
+
+   public function getPengirimanWithUsername()
+    {
+        $this->db->select('pengiriman_kebutuhan_posko.*, users.username');
+        $this->db->from('pengiriman_kebutuhan_posko');
+        $this->db->join('users', 'users.user_id = pengiriman_kebutuhan_posko.user_id', 'left');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 
 

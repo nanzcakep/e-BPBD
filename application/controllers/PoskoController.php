@@ -69,10 +69,12 @@ class PoskoController extends CI_Controller {
             $save =  $this->PoskoModel->createDataPosko($data);
             if ($save === true) {
                     // Data berhasil disimpan, berikan respons sukses
-                    echo "Data Posko berhasil disimpan.";
+                    $this->session->set_flashdata('success_message', 'Data posko berhasil disimpan.');
+                    redirect('admin/dashboard/posko');
                 } else {
                     // Data gagal disimpan, tampilkan pesan error validasi
-                    echo "Terjadi kesalahan: " . $save;
+                    $this->session->set_flashdata('error_message', 'Data posko gagal disimpan ! '.$save);
+                    redirect('admin/dashboard/posko');
                 }
             }else{
                 redirect('404_views');
@@ -109,10 +111,12 @@ class PoskoController extends CI_Controller {
     
                 if ($save === true) {
                     // Data berhasil disimpan, berikan respons sukses
-                    echo "Data posko berhasil disimpan.";
+                    $this->session->set_flashdata('success_message', 'Data posko berhasil diupdate .');
+                    redirect('admin/dashboard/posko/update/'.$id_posko);
                 } else {
                     // Data gagal disimpan, tampilkan pesan error validasi
-                    echo "Terjadi kesalahan: " . $save;
+                    $this->session->set_flashdata('error_message', 'Data posko gagal diupdate ! '.$save);
+                    redirect('admin/dashboard/posko/update/'.$id_posko);
                 }
             } else {
                 redirect('404_views');
@@ -124,7 +128,8 @@ class PoskoController extends CI_Controller {
         try {
             $this->PoskoModel->deleteDataPosko($id_posko);
             // Jika berhasil dihapus, berikan notifikasi sukses
-            echo "Data posko berhasil dihapus.";
+            $this->session->set_flashdata('success_message', 'Data posko berhasil dihapus ');
+            redirect('admin/dashboard/posko');
         } catch (Exception $e) {
             // Jika terjadi kesalahan, arahkan ke halaman 404
             redirect('404_views');

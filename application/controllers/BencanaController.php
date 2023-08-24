@@ -55,10 +55,12 @@ class BencanaController extends CI_Controller {
 
             if ($save === true) {
                     // Data berhasil disimpan, berikan respons sukses
-                    echo "Data bencana berhasil disimpan.";
+                    $this->session->set_flashdata('success_message', 'Data bencana berhasil disimpan.');
+                    redirect('admin/dashboard/bencana');
                 } else {
                     // Data gagal disimpan, tampilkan pesan error validasi
-                    echo "Terjadi kesalahan: " . $save;
+                    $this->session->set_flashdata('error_message', 'Data bencana gagal disimpan. ' .$save);
+                    redirect('admin/dashboard/bencana');
                 }
             }else{
                 redirect('404_views');
@@ -70,10 +72,12 @@ class BencanaController extends CI_Controller {
         if (!isset($_POST['update'])) {
             try {
                 $bencana = $this->BencanaModel->getDetailBencana($id_bencana);
-                $this->load->view('pages/bencana/update', [
-                    'data' => $bencana,
-                    'title' => 'Detail bencana'
+                $this->load->view('dashboard/layout/navbar');
+                $this->load->view('dashboard/bencana/update', [
+                    'bencana' => $bencana,
+                    'title' => 'Update bencana'
                 ]);
+                $this->load->view('dashboard/layout/footer');
             } catch (Exception $e) {
                 redirect('404_views');
             }
@@ -93,10 +97,12 @@ class BencanaController extends CI_Controller {
     
                 if ($save === true) {
                     // Data berhasil disimpan, berikan respons sukses
-                    echo "Data bencana berhasil disimpan.";
+                    $this->session->set_flashdata('success_message', 'Data bencana berhasil diupdate ');
+                    redirect('admin/dashboard/bencana/update/'.$id_bencana);
                 } else {
                     // Data gagal disimpan, tampilkan pesan error validasi
-                    echo "Terjadi kesalahan: " . $save;
+                    $this->session->set_flashdata('error_message', 'Data bencana gagal diupdate '. $save);
+                    redirect('admin/dashboard/bencana/update/'.$id_bencana);
                 }
             } else {
                 redirect('404_views');
@@ -108,7 +114,8 @@ class BencanaController extends CI_Controller {
         try {
             $this->BencanaModel->deleteDataBencana($id_bencana);
             // Jika berhasil dihapus, berikan notifikasi sukses
-            echo "Data bencana berhasil dihapus.";
+            $this->session->set_flashdata('success_message', 'Data bencana berhasil dihapus ');
+            redirect('admin/dashboard/bencana/');
         } catch (Exception $e) {
             // Jika terjadi kesalahan, arahkan ke halaman 404
             redirect('404_views');

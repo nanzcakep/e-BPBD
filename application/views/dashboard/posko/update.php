@@ -4,6 +4,17 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Update Data</h1>
 <p class="mb-4">Isi data-data dibawah dengan benar.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -13,15 +24,15 @@
     <div class="card-body">
         <form action="" method="post">
             <label for="posko" class="mb-1">Nama</label>
-            <input type="text" name="posko" class="form-control mb-2 w-100" value="<?= $data->posko; ?>">
+            <input type="text" name="posko" class="form-control mb-2 w-100" value="<?= $data->posko; ?>" required>
             <label for="alamat" class="mb-1">Alamat</label>
-            <input type="text" name="alamat" class="form-control mb-2 w-100" value="<?= $data->alamat; ?>">
+            <input type="text" name="alamat" class="form-control mb-2 w-100" value="<?= $data->alamat; ?>" required>
             <label for="kota" class="mb-1">Kota</label>
-            <input type="text" name="kota" class="form-control mb-2 w-100" value="<?= $data->kota; ?>">
+            <input type="text" name="kota" class="form-control mb-2 w-100" value="<?= $data->kota; ?>" required>
             <label for="kapasitas" class="mb-1">Kapasitas</label>
-            <input type="number" name="kapasitas" class="form-control mb-2 w-100" value="<?= $data->kapasitas; ?>">
+            <input type="number" name="kapasitas" class="form-control mb-2 w-100" value="<?= $data->kapasitas; ?>" required>
             <label for="id_bencana" class="mb-1">Bencana yang terjadi : </label>
-            <select name="id_bencana" id="id_bencana" class="form-control mb-4 w-100">
+            <select name="id_bencana" id="id_bencana" class="form-control mb-4 w-100" required>
                 <option value="<?= $data->id_bencana; ?>"><?= $data->bencana.' - '.$data->lokasi; ?></option>
                 <?php foreach ($bencana as $row) : ?>
                     <?php if ($row->id_bencana !== $data->id_bencana) : ?>

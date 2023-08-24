@@ -53,6 +53,9 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = 'Custom404Controller';
 $route['translate_uri_dashes'] = FALSE;
 
+//landingpages
+$route['test'] = 'Welcome/test';
+
 
 //dashboard
 $route['admin/dashboard'] = 'DashboardController/index';
@@ -104,5 +107,7 @@ $route['dashboard/histori-donasi'] = 'UserDashboardController/getHistoriDonasi';
 
 //AuthController
 $route['login'] = 'AuthController/index';
+$route['register'] = 'AuthController/registrationView';
+$route['auth/register'] = 'AuthController/register';
 $route['auth/login'] = 'AuthController/login';
 $route['auth/logout'] = 'AuthController/logout';

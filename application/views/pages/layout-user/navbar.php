@@ -62,14 +62,6 @@
                 <i class="fas fa-fw fa-table"></i>
                     <span>Histori</span></a>
             </li>
-
-            <!-- Nav Item - Data Posko -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('dashboard/posko') ?>">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Data Posko</span></a>
-            </li>
-
            
 
             <!-- Divider -->
@@ -104,7 +96,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="<?= base_url('public/assets/img/undraw_profile.svg') ?>">
                             </a>

@@ -4,6 +4,18 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data Kebutuhan Posko</h1>
 <p class="mb-4">Berikut adalah data kebutuhan posko yang terdapat di kota Batu.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -58,11 +70,11 @@
     <div class="card-body">
         <form action="<?= base_url('admin/dashboard/kebutuhan-posko/tambah'); ?>" method="post">
             <label for="kebutuhan" class="mb-1">Kebutuhan</label>
-            <input type="text" name="kebutuhan" class="form-control mb-2 w-100">
+            <input type="text" name="kebutuhan" class="form-control mb-2 w-100" required>
             <label for="jumlah"class="mb-1">Jumlah</label>
-            <input type="number" name="jumlah" class="form-control mb-2 w-100">
+            <input type="number" name="jumlah" class="form-control mb-2 w-100" required>
             <label for="posko"class="mb-1">Pilih Posko</label>
-            <select name="posko" id="posko" class="form-control mb-4 w-100">
+            <select name="posko" id="posko" class="form-control mb-4 w-100" required>
                 <?php foreach($data as $posko) : ?>
                     <option value="<?= $posko->id_posko ?>"><?= $posko->posko ?></option>
                 <?php endforeach; ?>

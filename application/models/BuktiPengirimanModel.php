@@ -4,11 +4,12 @@ class BuktiPengirimanModel extends CI_Model {
     private $table = 'pengiriman_kebutuhan_posko';
 
     public function getBuktiByKebutuhan($id_kebutuhan){
-        $query = $this->db->select('*')
-            ->from($this->table)
-            ->where('id_kebutuhan', $id_kebutuhan)
-            ->get();
-
+        $this->db->select('pengiriman_kebutuhan_posko.*, users.username');
+        $this->db->from($this->table);
+        $this->db->where('id_kebutuhan', $id_kebutuhan);
+        $this->db->join('users', 'users.user_id = pengiriman_kebutuhan_posko.user_id', 'left');
+        $query = $this->db->get();
+    
         return $query->result();
     }
 
@@ -17,16 +18,26 @@ class BuktiPengirimanModel extends CI_Model {
    }
 
     public function getHistoryUser($user_id){
-        $query = $this->db->select('pengiriman_kebutuhan_posko.*, users.username, users.email')
-            ->from($this->table)
-            ->join('users', 'pengiriman_kebutuhan_posko.user_id = users.user_id', 'left')
-            ->where('pengiriman_kebutuhan_posko.user_id', $user_id)
-            ->get();
+        $query = $this->db->select('pengiriman.*, kebutuhan.jenis_kebutuhan')
+        ->from('pengiriman_kebutuhan_posko as pengiriman')
+        ->join('kebutuhan_posko as kebutuhan', 'pengiriman.id_kebutuhan = kebutuhan.id_kebutuhan', 'left')
+        ->where('pengiriman.user_id', $user_id)
+        ->get();
 
         if ($query->num_rows() === 0) {
             return []; // Return empty array if no data found
         }
         return $query->result(); // Menggunakan result() untuk mendapatkan beberapa baris data
+
     
+    }
+
+    public function updateStatusById($id, $status) {
+        $data = array(
+            'status' => $status
+        );
+    
+        $this->db->where('id', $id);
+        $this->db->update($this->table, $data);
     }
 }

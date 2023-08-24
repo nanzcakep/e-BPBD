@@ -14,18 +14,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+        <!-- CSS -->
+     
         <link rel="stylesheet" href="<?= base_url('public/assets/css/style.css') ?>">
         <link rel="stylesheet" href="<?= base_url('public/assets/css/responsive.css') ?>">
        
         
         <!-- Title -->
         <link rel="icon" href="<?= base_url('public/assets/img/logo.png') ?>" type="image/x-icon">
-        <title>Login - BPBD Kota Batu</title>
+        <title>Register - BPBD Kota Batu</title>
     </head>
 
     <body>
         <!-- Section Login -->
-        <section class="vh-100" id="login" style="background-color: #4d5358;">
+        <section class="min-vh-100" id="register" style="background-color: #4d5358;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -34,17 +36,28 @@
                             <div class="card-body p-5">
                                 
                                 <!-- Title -->
-                                <h3 class="mb-4 text-center title-css">LOGIN</h3>
+                                <h3 class="mb-4 text-center title-css">REGISTER</h3>
+                                <?php if ($this->session->flashdata('success_message')) : ?>
+                                    <div class="alert alert-success">
+                                        <?= $this->session->flashdata('success_message') ?>
+                                    </div>
+                                <?php endif; ?>   
                                 <?php if ($this->session->flashdata('error_message')) : ?>
                                 <div class="alert alert-danger">
                                     <?= $this->session->flashdata('error_message') ?>
                                 </div>
                                 <?php endif; ?>           
-                                <?php echo form_open('auth/login'); ?>
+                                <?php echo form_open('auth/register'); ?>
                                     <!-- Username Form -->
                                     <div class="mb-3">
                                         <label class="form-label" for="username">username</label>
                                         <input type="text" id="username" name="username" class="form-control form-control-css" />
+                                    </div>
+
+                                    <!-- Password Form -->
+                                    <div class="mb-4">
+                                        <label class="form-label" for="email">email</label>
+                                        <input type="email" id="email" name="email" class="form-control form-control-css" />
                                     </div>
             
                                     <!-- Password Form -->
@@ -55,17 +68,14 @@
                                     
                                     <!-- Button Login -->
                                     <div class="text-center">
-                                        <button class="btn-login-css" type="submit">Login</button>
+                                        <button class="btn-register-css" type="submit">Register</button>
                                     </div>
                                 </form>
-                                <!-- Garis Pemisah -->
-                                <hr class="mt-5 mb-3">
-                                
-                                <!-- Daftar -->
-                                <p class="text-center mb-0 register-css">Belum memiliki akun? <a href="<?= base_url('register') ?>" class="button-register-css">Daftar Disini</a></p>
-
+                                <div class="text-center mt-5 ">
+                                    <a href="<?= base_url('login') ?>">Login</a>
+                                </div>
                             </div>
-                        </div>
+                        </div>   
                     </div>
                 </div>
             </div>

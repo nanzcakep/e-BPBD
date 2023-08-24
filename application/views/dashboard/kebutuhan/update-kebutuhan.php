@@ -3,6 +3,17 @@
         <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Detail Kebutuhan <?= $kebutuhanPosko->jenis_kebutuhan ?> - <?php echo $nama_posko->posko ?></h1>
 <p class="mb-4">Berikut adalah data detail kebutuhan posko yang terdapat di kota Batu.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
