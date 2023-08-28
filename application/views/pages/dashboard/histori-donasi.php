@@ -20,8 +20,10 @@
         <?php foreach($histories as $histori) : ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span class="status"><?= $histori->jenis_kebutuhan ?></span>
-                <span class="status"><?= $histori->status ?></span>
-                <span class="badge badge-primary badge-pill tanggal"><?= $histori->tanggal_pengiriman ?></span>
+                <span class="badge badge-pill status <?= $histori->status == 'Terkirim' ? 'badge-warning' : 'badge-success' ?>">
+                    <?= $histori->status ?>
+                </span>
+                <span class="tanggal"><?= $histori->tanggal_pengiriman ?></span>
             </li>
         <?php endforeach; ?>
     </ul>

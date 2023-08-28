@@ -40,4 +40,17 @@ class BuktiPengirimanModel extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update($this->table, $data);
     }
+
+    public function updateDonasi($id_pengiriman, $data){
+        $this->db->update($this->table, $data, array('id_pengiriman' => $id_pengiriman));
+    }
+
+    public function detailDonasi($id_pengiriman){
+        $query = $this->db->get_where($this->table, array('id_pengiriman' => $id_pengiriman));
+        
+        // Mengembalikan hasil query dalam bentuk row atau NULL jika tidak ditemukan
+        return $query->row();
+    }
+
+
 }

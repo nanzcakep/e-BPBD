@@ -26,8 +26,9 @@
                         <th>Foto</th>
                         <th>User</th>
                         <th>Tanggal Pengiriman</th>
-                        <th>Keterangan</th>
+                      
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -35,8 +36,9 @@
                         <th>Foto</th>
                         <th>User</th>
                         <th>Tanggal Pengiriman</th>
-                        <th>Keterangan</th>
+                        
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -45,8 +47,10 @@
                             <td><img src="<?= base_url(''.$bakti->bukti) ?>" alt="" width="100"></td>
                             <td><?= $bakti->username ?></td>
                             <td><?= $bakti->tanggal_pengiriman; ?></td>
-                            <td><?= $bakti->keterangan; ?></td>
                             <td><?= $bakti->status; ?></td>
+                            <td>
+                                <a href="<?= base_url('admin/dashboard/donasi/detail/'.$bakti->id_pengiriman) ?>">Detail</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

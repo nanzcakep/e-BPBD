@@ -36,11 +36,13 @@ class UserDashboardController extends CI_Controller {
     public function getDetailPosko($id_posko = NULL){
         try {
             $posko = $this->PoskoModel->getPoskoWithBencana($id_posko);
+            $pengungsi = $this->PengungsiModel->getPengungsiByPosko($id_posko);
             $kebutuhan = $this->KebutuhanPoskoModel->getKebutuhanByPoskoId($id_posko);
             $this->load->view('pages/layout-user/navbar');
             $this->load->view('pages/dashboard/detail-posko', [
                 'posko' => $posko,
-                'kebutuhan' => $kebutuhan
+                'kebutuhan' => $kebutuhan,
+                'pengungsi' => $pengungsi
             ]);
             $this->load->view('pages/layout-user/footer');
         } catch (Exception $e) {
@@ -104,5 +106,27 @@ class UserDashboardController extends CI_Controller {
                 'histories' => $data
             ]);
         $this->load->view('pages/layout-user/footer');
+    }
+
+    public function getAllBencana(){
+        $bencana = $this->BencanaModel->getBencana(); // Call the getMobil method from the model
+        $this->load->view('pages/layout-user/navbar');
+        $this->load->view('pages/dashboard/bencana',[
+            'data' => $bencana,
+        ]); 
+        $this->load->view('pages/layout-user/footer');
+    }
+
+    public function getDetailBencana($id_bencana = NULL){
+        try {
+            $bencana = $this->BencanaModel->getDetailBencana($id_bencana);
+            $this->load->view('pages/layout-user/navbar');
+            $this->load->view('pages/dashboard/detail-bencana',[
+                'data' => $bencana,
+            ]); 
+            $this->load->view('pages/layout-user/footer');
+        } catch (Exception $e) {
+            redirect('404_views');
+        }
     }
 }

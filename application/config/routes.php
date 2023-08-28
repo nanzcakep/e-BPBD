@@ -97,13 +97,18 @@ $route['admin/dashboard/kebutuhan-posko/delete/(:num)'] = 'KebutuhanPoskoControl
 $route['admin/dashboard/donasi'] = 'DonasiController/index';
 $route['admin/dashboard/donasi/(:num)'] = 'DonasiController/donasi/$1';
 $route['admin/dashboard/donasi/kuy'] = 'DonasiController/donasi';
+$route['admin/dashboard/donasi/detail/(:num)'] = 'DonasiController/update/$1';
 
 //UserController
 $route['dashboard'] = 'UserDashboardController/index';
 $route['dashboard/posko'] = 'UserDashboardController/getAllPosko';
 $route['dashboard/posko/detail/(:num)'] = 'UserDashboardController/getDetailPosko/$1';
+$route['dashboard/bencana'] = 'UserDashboardController/getAllBencana';
+$route['dashboard/bencana/detail/(:num)'] = 'UserDashboardController/getDetailBencana/$1';
 $route['dashboard/donasi/(:num)'] = 'UserDashboardController/donasi/$1';
 $route['dashboard/histori-donasi'] = 'UserDashboardController/getHistoriDonasi';
+
+
 
 //AuthController
 $route['login'] = 'AuthController/index';

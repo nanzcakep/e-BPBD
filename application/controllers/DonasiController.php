@@ -85,12 +85,6 @@ class DonasiController extends CI_Controller {
         
             }
         }
-        
-
-    
-
-
-        
 
         // $kebutuhan = $this->KebutuhanPoskoModel->getDetailKebutuhan($id_kebutuhan);
         // if(!isset($_POST['donasi'])){ 
@@ -117,6 +111,34 @@ class DonasiController extends CI_Controller {
 
     }
 
+    public function update($id_pengiriman){
+        $detailDonasi = $this->BuktiPengirimanModel->detailDonasi($id_pengiriman);
+        if(!isset($_POST['update'])){
+            if($detailDonasi){
+                $this->load->view('dashboard/layout/navbar');
+                $this->load->view('dashboard/kebutuhan/update-donasi',[
+                     "data" => $detailDonasi,
+                 ]);
+                 $this->load->view('dashboard/layout/footer'); 
+            }else{
+                redirect('404_views');
+            }
+        }else{
+            $dataDonasi = [
+                'id_pengiriman' => $detailDonasi->id_pengiriman,
+                'id_kebutuhan' => $detailDonasi->id_kebutuhan,
+                'tanggal_pengiriman' => $detailDonasi->tanggal_pengiriman,
+                'bukti' => $detailDonasi->bukti,
+                'keterangan' => $detailDonasi->keterangan,
+                'status' => $this->input->post('status'),
+                'user_id' => $detailDonasi->user_id
+            ];
+
+            $this->BuktiPengirimanModel->updateDonasi($id_pengiriman,$dataDonasi);
+            $this->session->set_flashdata('success_message', 'Status donasi berhasil diubah');
+            redirect('admin/dashboard/donasi/detail/'.$detailDonasi->id_pengiriman);
+        }
+    }
   
     
 }
