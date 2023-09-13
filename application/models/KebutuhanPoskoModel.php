@@ -60,6 +60,19 @@ class KebutuhanPoskoModel extends CI_Model {
         return $query->result();
     }
 
+    public function getDetailDonasi($id_pengiriman){
+        $this->db->select('pengiriman_kebutuhan_posko.tanggal_pengiriman, pengiriman_kebutuhan_posko.bukti, pengiriman_kebutuhan_posko.keterangan, pengiriman_kebutuhan_posko.status, pengiriman_kebutuhan_posko.user_id, kebutuhan_posko.jenis_kebutuhan, posko.posko');
+        $this->db->from('pengiriman_kebutuhan_posko');
+        $this->db->join('kebutuhan_posko', 'pengiriman_kebutuhan_posko.id_kebutuhan = kebutuhan_posko.id_kebutuhan');
+        $this->db->join('posko', 'kebutuhan_posko.id_posko = posko.id_posko');
+        $this->db->where('pengiriman_kebutuhan_posko.id_pengiriman', $id_pengiriman);
+        
+        $query = $this->db->get();
+        
+        return $query->row();
+
+    }
+
 
 
     

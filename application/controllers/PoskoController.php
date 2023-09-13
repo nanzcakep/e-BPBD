@@ -50,12 +50,17 @@ class PoskoController extends CI_Controller {
             $posko = $this->PoskoModel->getPoskoWithBencana($id_posko);
             $pengungsi = $this->PengungsiModel->getPengungsiByPosko($id_posko);
             $kebutuhan = $this->KebutuhanPoskoModel->getKebutuhanByPoskoId($id_posko);
+            $countBalita = $this->PengungsiModel->countBalita();
+            $countDewasa = $this->PengungsiModel->countDewasa();
+            $countOrangTua = $this->PengungsiModel->countOrangTua();
             $this->load->view('dashboard/layout/navbar');
             $this->load->view('dashboard/posko/detail', [
                 'data' => $posko,
                 'pengungsi' => $pengungsi,
                 'kebutuhan' => $kebutuhan,
-                'title' => 'Detail Posko'
+                'countBalita' => $countBalita,
+                'countDewasa' => $countDewasa,
+                'countOrangTua' => $countOrangTua
             ]);
             $this->load->view('dashboard/layout/footer');
         } catch (Exception $e) {

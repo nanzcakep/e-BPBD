@@ -72,7 +72,101 @@
         </div>
     </div>
 </div>
+<div class="row">
 
+    <!-- Jumlah Bencana Alam Card-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah balita</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countBalita ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jumlah Pengungsi Card -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah Dewasa</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDewasa ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Presentase Jumlah Bantuan Card -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah Lansia</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countOrangTua ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Daftar Pengungsi</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Alamat</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Alamat</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                <?php foreach ($pengungsi as $row) : ?>
+                    <tr>
+                        <td><?= $row->nama; ?></td>
+                        <td><?= $row->umur; ?></td>
+                        <td><?= $row->jenis_kelamin; ?></td>
+                        <td><?= $row->alamat; ?></td>
+                        <td>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>" class='btn btn-primary'>detail</a>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/update/'.$row->id_pengungsi); ?>" class='btn btn-success'>update</a>
+                            <a href="<?= base_url('admin/dashboard/pengungsi/delete/'.$row->id_pengungsi); ?>" class='btn btn-danger'>delete</a>
+                    </td>
+                    </tr>
+                <?php endforeach; ?>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -80,7 +174,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Jenis Kebutuhan</th>
@@ -109,46 +203,6 @@
                         <td><a href="<?= base_url('admin/dashboard/donasi/'.$need->id_kebutuhan) ?>" class='btn btn-success'>Donasi Sekarang</a></td>
                     </tr>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-    
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">Daftar Pengungsi</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Umur</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Umur</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                <?php foreach ($pengungsi as $row) : ?>
-                    <tr>
-                        <td><?= $row->nama; ?></td>
-                        <td><?= $row->umur; ?></td>
-                        <td>
-                            <a href="<?= base_url('admin/dashboard/pengungsi/detail/'.$row->id_pengungsi); ?>" class='btn btn-primary'>detail</a>
-                            <a href="<?= base_url('admin/dashboard/pengungsi/update/'.$row->id_pengungsi); ?>" class='btn btn-success'>update</a>
-                            <a href="<?= base_url('admin/dashboard/pengungsi/delete/'.$row->id_pengungsi); ?>" class='btn btn-danger'>delete</a>
-                    </td>
-                    </tr>
-                <?php endforeach; ?>    
                 </tbody>
             </table>
         </div>

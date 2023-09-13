@@ -61,7 +61,7 @@ class AuthController extends CI_Controller {
         if ($this->form_validation->run() == false) {
             // Validation failed, load the registration view with errors
             $errors = validation_errors();
-            $this->session->set_flashdata('error_message', 'Kebutuhan posko gagal diupdate '. $errors);
+            $this->session->set_flashdata('error_message', 'Register gagal'. $errors);
             redirect('register');
         } else {
             // Validation passed, process the registration

@@ -72,6 +72,53 @@
         </div>
     </div>
 </div>
+<div class="row">
+
+    <!-- Jumlah Bencana Alam Card-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah balita</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countBalita ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jumlah Pengungsi Card -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah Dewasa</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDewasa ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Presentase Jumlah Bantuan Card -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                            Jumlah Lansia</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countOrangTua ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -85,14 +132,18 @@
                     <tr>
                         <th>Nama</th>
                         <th>Umur</th>
-                        
+                        <th>Jenis Kelamin</th>
+                        <th>Alamat</th>
+                        <th>Tanggal Masuk</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Nama</th>
                         <th>Umur</th>
-                       
+                        <th>Jenis Kelamin</th>
+                        <th>Alamat</th>
+                        <th>Tanggal Masuk</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -100,6 +151,10 @@
                     <tr>
                         <td><?= $row->nama; ?></td>
                         <td><?= $row->umur; ?></td>
+                        <td><?= $row->jenis_kelamin; ?></td>
+                        <td><?= $row->alamat; ?></td>
+                        <td><?= $row->tanggal_masuk; ?></td>
+                        
                     </tr>
                 <?php endforeach; ?>    
                 </tbody>

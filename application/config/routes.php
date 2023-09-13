@@ -107,6 +107,7 @@ $route['dashboard/bencana'] = 'UserDashboardController/getAllBencana';
 $route['dashboard/bencana/detail/(:num)'] = 'UserDashboardController/getDetailBencana/$1';
 $route['dashboard/donasi/(:num)'] = 'UserDashboardController/donasi/$1';
 $route['dashboard/histori-donasi'] = 'UserDashboardController/getHistoriDonasi';
+$route['dashboard/histori-donasi/(:num)'] = 'UserDashboardController/detailDonasi/$1';
 
 
 

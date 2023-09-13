@@ -18,8 +18,20 @@ class UserDashboardController extends CI_Controller {
 
 
     public function index(){
+
+        $dataDashboard = [
+            'jumlahBencana' => $this->BencanaModel->jumlahBencana(),
+            'jumlahPengungsi' => $this->PengungsiModel->jumlahPengungsi(),
+            'jumlahPosko' => $this->PoskoModel->jumlahPosko(),
+        ];
+        
+       
+
+       
         $this->load->view('pages/layout-user/navbar');
-        $this->load->view('pages/dashboard/index');
+        $this->load->view('pages/dashboard/index',[
+            'dataDashboard' => $dataDashboard
+        ]);
         $this->load->view('pages/layout-user/footer');
     }
 
@@ -38,11 +50,17 @@ class UserDashboardController extends CI_Controller {
             $posko = $this->PoskoModel->getPoskoWithBencana($id_posko);
             $pengungsi = $this->PengungsiModel->getPengungsiByPosko($id_posko);
             $kebutuhan = $this->KebutuhanPoskoModel->getKebutuhanByPoskoId($id_posko);
+            $countBalita = $this->PengungsiModel->countBalita();
+            $countDewasa = $this->PengungsiModel->countDewasa();
+            $countOrangTua = $this->PengungsiModel->countOrangTua();
             $this->load->view('pages/layout-user/navbar');
             $this->load->view('pages/dashboard/detail-posko', [
                 'posko' => $posko,
                 'kebutuhan' => $kebutuhan,
-                'pengungsi' => $pengungsi
+                'pengungsi' => $pengungsi,
+                'countBalita' => $countBalita,
+                'countDewasa' => $countDewasa,
+                'countOrangTua' => $countOrangTua
             ]);
             $this->load->view('pages/layout-user/footer');
         } catch (Exception $e) {
@@ -128,5 +146,22 @@ class UserDashboardController extends CI_Controller {
         } catch (Exception $e) {
             redirect('404_views');
         }
+    }
+
+    public function detailDonasi($id_pengiriman){
+        $detailDonasi  = $this->KebutuhanPoskoModel->getDetailDonasi($id_pengiriman);
+       
+        $user =  $this->session->userdata('user_id');
+
+        if ($detailDonasi->user_id === $user){
+            $this->load->view('pages/layout-user/navbar');
+            $this->load->view('pages/dashboard/detail-donasi',[
+                'detailDonasi' => $detailDonasi
+            ]); 
+            $this->load->view('pages/layout-user/footer');
+        }else{
+            redirect('404_views');
+        }
+        
     }
 }

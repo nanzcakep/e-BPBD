@@ -117,4 +117,8 @@ class PoskoModel extends CI_Model {
        
     }
 
+    public function jumlahPosko(){
+        return $this->db->count_all($this->table);
+    }
+
 }

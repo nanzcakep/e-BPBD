@@ -64,5 +64,9 @@ class BencanaModel extends CI_Model {
         $this->db->delete($this->table, array('id_bencana' => $id_bencana));
     }
 
+    public function jumlahBencana(){
+        return $this->db->count_all($this->table);
+    }
+
 
 }

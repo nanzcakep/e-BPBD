@@ -4,6 +4,17 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Update data pengungsi</h1>
 <p class="mb-4">Isi data-data dibawah dengan benar.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -31,6 +42,10 @@
                     <option value="<?= $posko->id_posko ?>"><?= $posko->posko ?></option>
                 <?php endforeach; ?>
             </select>
+            <label>
+                Disabilitas
+                <input type="checkbox" name="disabilitas" value="Yes" <?php echo $pengungsi->is_disabilitas === "Yes" ? 'checked' : ''; ?>>
+            </label>
             <button type="submit" name="update" class="btn btn-primary w-100">Update</button>
         </form>
     </div>

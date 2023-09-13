@@ -45,5 +45,37 @@ class PengungsiModel extends CI_Model {
     }
 
 
+    public function countBalita(){
+        $this->db->where('umur >=', 1);
+        $this->db->where('umur <=', 5);
+        $this->db->from($this->table);
+        $count = $this->db->count_all_results();
+
+        return $count;
+    }
+
+    public function countDewasa(){
+        $this->db->where('umur >=', 6);
+        $this->db->where('umur <=', 30);
+        $this->db->from($this->table);
+        $count = $this->db->count_all_results();
+
+        return $count;
+    }
+
+    public function countOrangTua(){
+        $this->db->where('umur >=', 31);
+        $this->db->where('umur <=', 90);
+        $this->db->from($this->table);
+        $count = $this->db->count_all_results();
+
+        return $count;
+    }
+
+    public function jumlahPengungsi(){
+        return $this->db->count_all($this->table);
+    }
+
+
 
 }

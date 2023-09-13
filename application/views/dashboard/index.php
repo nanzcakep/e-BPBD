@@ -18,7 +18,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                             Jumlah Bencana Alam</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dataDashboard['jumlahBencana']; ?></div>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                             Jumlah Pengungsi</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">125</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dataDashboard['jumlahPengungsi']; ?></div>
                     </div>
                 </div>
             </div>
@@ -47,8 +47,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                            Presentase Jumlah Bantuan</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">45%</div>
+                            Jumlah Posko</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dataDashboard['jumlahPosko']; ?></div></div>
                     </div>
                 </div>
             </div>

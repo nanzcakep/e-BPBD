@@ -3,7 +3,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Histori Donasi</h1>
-<p class="mb-4">Isi data-data dibawah dengan benar.</p>
+
 <?php if ($this->session->flashdata('success_message')) : ?>
     <div class="alert alert-success">
         <?= $this->session->flashdata('success_message') ?>
@@ -24,6 +24,7 @@
                     <?= $histori->status ?>
                 </span>
                 <span class="tanggal"><?= $histori->tanggal_pengiriman ?></span>
+                <a href="histori-donasi/<?= $histori->id_pengiriman;   ?>" class="btn btn-primary">Detail</a>
             </li>
         <?php endforeach; ?>
     </ul>

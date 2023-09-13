@@ -4,6 +4,17 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data Pengungsi</h1>
 <p class="mb-4">Berikut adalah data pengungsi yang terdapat di kota Batu.</p>
+<?php if ($this->session->flashdata('success_message')) : ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('error_message')) : ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php endif; ?>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -83,6 +94,10 @@
                     <option value="<?= $poskos->id_posko ?>"><?= $poskos->posko ?></option>
                 <?php endforeach; ?>
             </select>
+            <label>
+            Disabilitas
+                <input type="checkbox" name="disabilitas" value="Yes">
+            </label>
             <button type="submit" class="btn btn-primary w-100">Tambah</button>
         </form>
     </div>
