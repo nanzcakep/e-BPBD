@@ -14,18 +14,26 @@ class DashboardController extends CI_Controller {
 
     public function index(){
 
+        // $query =  $this->PengungsiModel->jumlahDisabilitas();
+        // echo $query;
+
         $dataDashboard = [
             'jumlahBencana' => $this->BencanaModel->jumlahBencana(),
             'jumlahPengungsi' => $this->PengungsiModel->jumlahPengungsi(),
             'jumlahPosko' => $this->PoskoModel->jumlahPosko(),
+            'jumlahKorban' => $this->KorbanJiwaModel->jumlahKorban(),
+            'jumlahDisabilitas' => $this->PengungsiModel->jumlahDisabilitas()
         ];
+
+        $countKebutuhanPosko = $this->KebutuhanPoskoModel->countKebutuhanPosko();
         
        
 
        
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/index',[
-            'dataDashboard' => $dataDashboard
+            'dataDashboard' => $dataDashboard,
+            'countKebutuhanPosko' => $countKebutuhanPosko
         ]);
         $this->load->view('dashboard/layout/footer');
        

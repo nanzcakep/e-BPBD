@@ -29,6 +29,7 @@ class KebutuhanPoskoController extends CI_Controller {
             'kebutuhanPosko' => $kebutuhanPosko
         ]);
         $this->load->view('dashboard/layout/footer');
+        
     }
 
    

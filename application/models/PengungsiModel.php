@@ -76,6 +76,33 @@ class PengungsiModel extends CI_Model {
         return $this->db->count_all($this->table);
     }
 
+    public function jumlahDisabilitas(){
+        $this->db->select('COUNT(*) as jumlah_disabilitas');
+        $this->db->from($this->table);
+        $this->db->where('is_disabilitas', 'Yes');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        $jumlah_disabilitas = $result->jumlah_disabilitas;
+
+        return $jumlah_disabilitas;
+    }
+
+    public function jumlahDisabalitasbyPosko($id_posko){
+        $this->db->select('COUNT(*) as jumlah_disabilitas');
+        $this->db->from($this->table);
+        $this->db->where('is_disabilitas', 'Yes');
+        $this->db->where('id_posko', $id_posko);
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        $jumlah_disabilitas = $result->jumlah_disabilitas;
+
+        return $jumlah_disabilitas;
+    }
+
 
 
 }

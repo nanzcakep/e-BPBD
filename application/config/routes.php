@@ -117,3 +117,10 @@ $route['register'] = 'AuthController/registrationView';
 $route['auth/register'] = 'AuthController/register';
 $route['auth/login'] = 'AuthController/login';
 $route['auth/logout'] = 'AuthController/logout';
+
+//KorbanJiwaController
+$route['admin/dashboard/korban-jiwa'] = 'KorbanController/index';
+$route['admin/dashboard/korban-jiwa/detail/(:num)'] = 'KorbanController/detail/$1';
+$route['admin/dashboard/korban-jiwa/tambah'] = 'KorbanController/tambah';
+$route['admin/dashboard/korban-jiwa/update/(:num)'] = 'KorbanController/update/$1';
+$route['admin/dashboard/korban-jiwa/delete/(:num)'] = 'KorbanController/delete/$1';

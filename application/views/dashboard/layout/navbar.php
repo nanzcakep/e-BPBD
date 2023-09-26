@@ -57,6 +57,13 @@
                     <span>Data Pengungsi</span></a>
             </li>
 
+             <!-- Nav Item - Data Korban Jiwa -->
+             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/dashboard/korban-jiwa') ?>">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Korban Jiwa</span></a>
+            </li>
+
             <!-- Nav Item - Data Posko -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/dashboard/posko') ?>">

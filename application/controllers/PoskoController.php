@@ -53,6 +53,9 @@ class PoskoController extends CI_Controller {
             $countBalita = $this->PengungsiModel->countBalita();
             $countDewasa = $this->PengungsiModel->countDewasa();
             $countOrangTua = $this->PengungsiModel->countOrangTua();
+            $countDisabilitas = $this->PengungsiModel->jumlahDisabalitasbyPosko($id_posko);
+
+           
             $this->load->view('dashboard/layout/navbar');
             $this->load->view('dashboard/posko/detail', [
                 'data' => $posko,
@@ -60,7 +63,8 @@ class PoskoController extends CI_Controller {
                 'kebutuhan' => $kebutuhan,
                 'countBalita' => $countBalita,
                 'countDewasa' => $countDewasa,
-                'countOrangTua' => $countOrangTua
+                'countOrangTua' => $countOrangTua,
+                'countDisabilitas' => $countDisabilitas
             ]);
             $this->load->view('dashboard/layout/footer');
         } catch (Exception $e) {

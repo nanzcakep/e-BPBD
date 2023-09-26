@@ -24,6 +24,8 @@ class UserDashboardController extends CI_Controller {
             'jumlahPengungsi' => $this->PengungsiModel->jumlahPengungsi(),
             'jumlahPosko' => $this->PoskoModel->jumlahPosko(),
         ];
+
+
         
        
 
@@ -53,6 +55,7 @@ class UserDashboardController extends CI_Controller {
             $countBalita = $this->PengungsiModel->countBalita();
             $countDewasa = $this->PengungsiModel->countDewasa();
             $countOrangTua = $this->PengungsiModel->countOrangTua();
+            $countDisabilitas = $this->PengungsiModel->jumlahDisabalitasbyPosko($id_posko);
             $this->load->view('pages/layout-user/navbar');
             $this->load->view('pages/dashboard/detail-posko', [
                 'posko' => $posko,
@@ -60,7 +63,8 @@ class UserDashboardController extends CI_Controller {
                 'pengungsi' => $pengungsi,
                 'countBalita' => $countBalita,
                 'countDewasa' => $countDewasa,
-                'countOrangTua' => $countOrangTua
+                'countOrangTua' => $countOrangTua,
+                'countDisabilitas' => $countDisabilitas
             ]);
             $this->load->view('pages/layout-user/footer');
         } catch (Exception $e) {

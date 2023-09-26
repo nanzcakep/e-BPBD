@@ -97,86 +97,26 @@
                     <p class="mb-5">Berikut adalah data posko-posko yang terdapat di kota Batu.</p>
                 </div>
                 <div class="col-md-12 card-posko rounded-3 p-5 shadow-lg">
-                    <table id="example" class="cell-border hover nowrap" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Kapasitas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Posko</th>
+                            <th>Alamat</th>
+                            <th>Kapasitas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($dataPosko->result() as $posko) : ?>
                             <tr>
                                 <td>1</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
+                                <td><?= $posko->posko ?></td>
+                                <td><?= $posko->alamat ?></td>
+                                <td><?= $posko->kapasitas ?></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Posko A</td>
-                                <td>Jalan 123, Batu, Jawa Timur</td>
-                                <td>150</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Kapasitas</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </section>

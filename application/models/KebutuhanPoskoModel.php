@@ -74,6 +74,11 @@ class KebutuhanPoskoModel extends CI_Model {
     }
 
 
+    public function countKebutuhanPosko(){
+       return $this->db->count_all($this->table);
+    }
+
+
 
     
 }
